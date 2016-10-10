@@ -1,38 +1,12 @@
 ---
 title: Hello World
 ---
-Welcome to [Hexo](https://hexo.io/)! This is your very first post. Check [documentation](https://hexo.io/docs/) for more info. If you get any problems when using Hexo, you can find the answer in [troubleshooting](https://hexo.io/docs/troubleshooting.html) or you can ask me on [GitHub](https://github.com/hexojs/hexo/issues).
+Welcome to my new blog!
 
-## Quick Start
+A bit about me...I'm a software developer, and I'm interested in platforms and game development. I've worked on platforms at Microsoft and HBO, 
+and soon I'll be joining Facebook to help bring VR to the web.
 
-### Create a new post
+I'm not sure how this blog will evolve, but the plan is to post about web development, WebGL, WebVR, Chromium, electronics, racing drones,
+and whatever other topics interest me.
 
-``` bash
-$ hexo new "My New Post"
-```
-
-More info: [Writing](https://hexo.io/docs/writing.html)
-
-### Run server
-
-``` bash
-$ hexo server
-```
-
-More info: [Server](https://hexo.io/docs/server.html)
-
-### Generate static files
-
-``` bash
-$ hexo generate
-```
-
-More info: [Generating](https://hexo.io/docs/generating.html)
-
-### Deploy to remote sites
-
-``` bash
-$ hexo deploy
-```
-
-More info: [Deployment](https://hexo.io/docs/deployment.html)
+That's it for now, just wanted to say hi.  Stay tuned!
