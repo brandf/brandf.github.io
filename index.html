@@ -94,8 +94,19 @@
       
         <p>With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoption is lagging behind, so developers must make a choice: limit yourself to commonly adopted features (such as ES5), or use a build system to take advantage of modern features and ‘compile’ it down to ES5.</p>
 <p>In this post, I’m going to describe how I setup the latter, specifically for making a website that is using WebGL. If you’ve been paying attention over the last few years, you will have noticed that there are plenty of options for javascript build system tools, and it can be confusing what to use and how to set it up so I’m going to focus on what I believe is the simplest system that gives you the most bang for your buck.</p>
-<p>First, we need to decide how we’re going to execute the build process.  For this, I think the choice is easy - Node.js. Your team is presumably already familiar with javascript, so writing the build system in javascript is natural. Node also ships with a fantastic package manager (npm), so this will make it easy to pull in 3rd party dependencies.</p>
-<p>If you don’t have it already, go ahead and install Node.js from <a href="https://nodejs.org/" target="_blank" rel="external">https://nodejs.org/</a><br>We’re going to be using github for source control, if you don’t have it, you can get the client from <a href="https://desktop.github.com/" target="_blank" rel="external">https://desktop.github.com/</a></p>
+<p>Specifically, in this and subsequent posts we’re going build an environment that uses the following tools:</p>
+<ul>
+<li>git (for source control)</li>
+<li>node/npm (for package management)</li>
+<li>webpack (for bundling)</li>
+<li>babel (for es2017 transpiling)</li>
+<li>eslint (for static analysis)</li>
+<li>editorconfig (for editor settings)</li>
+</ul>
+<p>Instead of just giving you a yeoman generator that drops a complicated build system in your lap, we’re going to build it up piece by piece from scratch.</p>
+<p>First, we need to decide how we’re going to execute the build process.  For this, I think the choice is easy - Node.js. Your team is presumably already familiar with javascript, so writing the build system in javascript is a natural choice. Node also ships with a fantastic package manager (npm), so this will make it easy to pull in 3rd party dependencies like webpack and babel.</p>
+<p>If you don’t have it already, go ahead and install Node.js from <a href="https://nodejs.org/" target="_blank" rel="external">https://nodejs.org/</a></p>
+<p>We’re going to be using github for source control, if you don’t have it, you can get the client from <a href="https://desktop.github.com/" target="_blank" rel="external">https://desktop.github.com/</a></p>
 <p>Now create a new github repro.  I typically do this from here <a href="https://github.com/new" target="_blank" rel="external">https://github.com/new</a>.</p>
 <p>After creating the repo, you’ll get a link that looks like this: <a href="https://github.com/brandf/brandf-environment-part1.git" target="_blank" rel="external">https://github.com/brandf/brandf-environment-part1.git</a>, only with your username/repro instead of mine.</p>
 <p>Now open up a terminal and we’ll setup a node package for our project.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; git <span class="built_in">clone</span> &lt;link_to_repo&gt;</div><div class="line">&gt; <span class="built_in">cd</span> &lt;repo_name&gt;</div><div class="line">&gt; npm init</div></pre></td></tr></table></figure></p>
@@ -126,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/" data-id="ciu5qqydx0000tcnzcy897u82" class="article-share-link">Share</a>
+      <a data-url="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/" data-id="ciu638cnb0001esnz95bxkpcn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es2015/">es2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webgl/">webgl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -168,7 +179,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://brandf.github.io/2016/10/02/hello-world/" data-id="ciu5qqyec000ftcnzjpaioh92" class="article-share-link">Share</a>
+      <a data-url="https://brandf.github.io/2016/10/02/hello-world/" data-id="ciu638cn80000esnztic290mg" class="article-share-link">Share</a>
       
       
     </footer>
