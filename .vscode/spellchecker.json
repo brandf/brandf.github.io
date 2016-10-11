@@ -1,0 +1,23 @@
+{
+    "language": "en_US",
+    "ignoreWordsList": [
+        "blog",
+        "WebGL",
+        "WebVR",
+        "Facebook",
+        "javascript",
+        "Webpack",
+        "json",
+        "Browserify",
+        "transpiled",
+        "webpack"
+    ],
+    "documentTypes": [
+        "markdown",
+        "latex",
+        "plaintext"
+    ],
+    "ignoreRegExp": [],
+    "ignoreFileExtensions": [],
+    "checkInterval": 5000
+}
