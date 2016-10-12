@@ -1,117 +1,28 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>Brandon Furtwangler</title>
+  <subtitle>code, drones and more</subtitle>
+  <link href="/atom.xml" rel="self"/>
   
-  <title>Setting up a modern webgl environment - part 1 | Brandon Furtwangler</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoption is lagging behind, so developers must make a choice: limit yo">
-<meta property="og:type" content="article">
-<meta property="og:title" content="Setting up a modern webgl environment - part 1">
-<meta property="og:url" content="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/index.html">
-<meta property="og:site_name" content="Brandon Furtwangler">
-<meta property="og:description" content="With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoption is lagging behind, so developers must make a choice: limit yo">
-<meta property="og:updated_time" content="2016-10-11T22:57:20.594Z">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Setting up a modern webgl environment - part 1">
-<meta name="twitter:description" content="With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoption is lagging behind, so developers must make a choice: limit yo">
+  <link href="https://brandf.github.io/"/>
+  <updated>2016-10-11T22:57:20.594Z</updated>
+  <id>https://brandf.github.io/</id>
   
-    <link rel="alternate" href="/atom.xml" title="Brandon Furtwangler" type="application/atom+xml">
-  
-  
-    <link rel="icon" href="/favicon.png">
-  
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="/css/style.css">
-  
-
-  <script type="text/javascript" src="/js/banner.js" defer></script>
-</head>
-
-<body>
-<script>
-  window.fbAsyncInit = function() {
-    FB.init({
-      appId      : '1662109954081271',
-      xfbml      : true,
-      version    : 'v2.8'
-    });
-  };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "//connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <iframe id="banner-iframe" style="height: 100%; width: 100%; overflow:hidden;" seamless="seamless" scrolling="no" frameborder="0" allowtransparency="true"></iframe>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Brandon Furtwangler</a>
-      </h1>
-      
-        <h2 id="subtitle-wrap">
-          <a href="/" id="subtitle">code, drones and more</a>
-        </h2>
-      
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://brandf.github.io"></form>
-      </div>
-    </div>
-  </div>
-</header>
-      <div class="outer">
-        <section id="main"><article id="post-modern-webgl-environment-part1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/10/modern-webgl-environment-part1/" class="article-date">
-  <time datetime="2016-10-11T04:23:57.000Z" itemprop="datePublished">2016-10-10</time>
-</a>
+  <author>
+    <name>Brandon Furtwangler</name>
     
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Coding/">Coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
+  </author>
   
-    <h1 class="article-title" itemprop="name">
-      Setting up a modern webgl environment - part 1
-    </h1>
+  <generator uri="http://hexo.io/">Hexo</generator>
   
-
-      </header>
+  <entry>
+    <title>Setting up a modern webgl environment - part 1</title>
+    <link href="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/"/>
+    <id>https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/</id>
+    <published>2016-10-11T04:23:57.000Z</published>
+    <updated>2016-10-11T22:57:20.594Z</updated>
     
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoption is lagging behind, so developers must make a choice: limit yourself to commonly adopted features (such as ES5), or use a build system to take advantage of modern features and ‘compile’ it down to ES5.</p>
+    <content type="html"><![CDATA[<p>With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoption is lagging behind, so developers must make a choice: limit yourself to commonly adopted features (such as ES5), or use a build system to take advantage of modern features and ‘compile’ it down to ES5.</p>
 <p>In this post, I’m going to describe how I setup the latter, specifically for making a website that is using WebGL. If you’ve been paying attention over the last few years, you will have noticed that there are plenty of options for javascript build system tools, and it can be confusing what to use and how to set it up so I’m going to focus on what I believe is the simplest system that gives you the most bang for your buck.</p>
 <p>Specifically, in this and subsequent posts we’re going build an environment that uses the following tools:</p>
 <ul>
@@ -152,127 +63,52 @@
 <p>And now, commit it to your repo.  We even commit ./bin/* because we want the project to work with github pages (more on this in another post).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; git add -A</div><div class="line">&gt; git commit -m <span class="string">"setup webpack and npm package"</span></div><div class="line">&gt; git push</div></pre></td></tr></table></figure></p>
 <p>That’s all for part 1.  You can find the end result here: <a href="https://github.com/brandf/brandf-environment-part1.git" target="_blank" rel="external">https://github.com/brandf/brandf-environment-part1.git</a></p>
 <p>In part 2 we’ll hook up babel, eslint, and start writing some modern javascript code.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/" data-id="ciu69mkqa0000conzyon44f10" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es2015/">es2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webgl/">webgl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </footer>
-  </div>
-  
+]]></content>
     
-<nav id="article-nav">
-  
-  
-    <a href="/2016/10/02/hello-world/" id="article-nav-older" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hello World</div>
-    </a>
-  
-</nav>
-
-  
-</article>
-
-
-<div class="fb-comments" data-href="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/" data-numposts="10" data-width="800"></div>
-</section>
-        
-          <aside id="sidebar">
-  
+    <summary type="html">
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Categories</h3>
-    <div class="widget">
-      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/Coding/">Coding</a></li></ul>
-    </div>
-  </div>
-
-
-  
+      &lt;p&gt;With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoptio
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tags</h3>
-    <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/babel/">babel</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/es2015/">es2015</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/javascript/">javascript</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node/">node</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webgl/">webgl</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-    </div>
-  </div>
-
-
-  
+    </summary>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Tag Cloud</h3>
-    <div class="widget tagcloud">
-      <a href="/tags/babel/" style="font-size: 10px;">babel</a> <a href="/tags/es2015/" style="font-size: 10px;">es2015</a> <a href="/tags/javascript/" style="font-size: 10px;">javascript</a> <a href="/tags/node/" style="font-size: 10px;">node</a> <a href="/tags/webgl/" style="font-size: 10px;">webgl</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
-    </div>
-  </div>
-
-  
+      <category term="Coding" scheme="https://brandf.github.io/categories/Coding/"/>
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/10/">October 2016</a></li></ul>
-    </div>
-  </div>
-
-
-  
     
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
-        
-          <li>
-            <a href="/2016/10/10/modern-webgl-environment-part1/">Setting up a modern webgl environment - part 1</a>
-          </li>
-        
-          <li>
-            <a href="/2016/10/02/hello-world/">Hello World</a>
-          </li>
-        
-      </ul>
-    </div>
-  </div>
-
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2016 Brandon Furtwangler<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
-    </div>
-  </div>
-</footer>
-    </div>
-    <nav id="mobile-nav">
-  
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+      <category term="webgl" scheme="https://brandf.github.io/tags/webgl/"/>
     
-
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-
-
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-  </div>
-</body>
-</html>
+      <category term="webpack" scheme="https://brandf.github.io/tags/webpack/"/>
+    
+      <category term="babel" scheme="https://brandf.github.io/tags/babel/"/>
+    
+      <category term="es2015" scheme="https://brandf.github.io/tags/es2015/"/>
+    
+      <category term="javascript" scheme="https://brandf.github.io/tags/javascript/"/>
+    
+      <category term="node" scheme="https://brandf.github.io/tags/node/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Hello World</title>
+    <link href="https://brandf.github.io/2016/10/02/hello-world/"/>
+    <id>https://brandf.github.io/2016/10/02/hello-world/</id>
+    <published>2016-10-02T17:28:38.417Z</published>
+    <updated>2016-10-11T17:31:54.408Z</updated>
+    
+    <content type="html"><![CDATA[<p>Welcome to my new blog!</p>
+<p>A bit about me…I’m a software developer, and I’m interested in platforms and game development. I’ve worked on platforms at Microsoft and HBO, and soon I’ll be joining Facebook to help bring VR to the web.</p>
+<p>I’m not sure how this blog will evolve, but the plan is to post about web development, WebGL, WebVR, Chromium, electronics, racing drones, and whatever other topics interest me.</p>
+<p>That’s it for now, just wanted to say hi.  Stay tuned!</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Welcome to my new blog!&lt;/p&gt;
+&lt;p&gt;A bit about me…I’m a software developer, and I’m interested in platforms and game development. I’ve worked
+    
+    </summary>
+    
+    
+  </entry>
+  
+</feed>
