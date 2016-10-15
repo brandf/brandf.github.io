@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://brandf.github.io/"/>
-  <updated>2016-10-15T02:31:04.754Z</updated>
+  <updated>2016-10-15T02:35:30.845Z</updated>
   <id>https://brandf.github.io/</id>
   
   <author>
@@ -20,12 +20,12 @@
     <link href="https://brandf.github.io/2016/10/14/modern-webgl-environment-part2/"/>
     <id>https://brandf.github.io/2016/10/14/modern-webgl-environment-part2/</id>
     <published>2016-10-15T05:52:57.000Z</published>
-    <updated>2016-10-15T02:31:04.754Z</updated>
+    <updated>2016-10-15T02:35:30.845Z</updated>
     
     <content type="html"><![CDATA[<p>In the last post we began to setup a modern javascript build system. If you didn’t read it, you can catch up here:</p>
 <p><a href="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/">https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/</a></p>
 <p>In this post we’re going to continue and setup babel, eslint, and editorconfig. At that point you’ll have an awesome environment to create the next great web app.</p>
-<p>If you were following along in par1, you can continue where we left off, otherwise clone this repo to catch up:</p>
+<p>If you were following along in part 1, you can continue where we left off, otherwise clone this repo to catch up:</p>
 <p><a href="https://github.com/brandf/brandf-environment-part1.git" target="_blank" rel="external">https://github.com/brandf/brandf-environment-part1.git</a></p>
 <p>The first thing we’re going to do is setup an editor config. This is nice to have in an open source project because you don’t know what editor folks are going to use, and so this is a common way to describe what settings they should use.</p>
 <p>Simply create a file named .editorconfig that looks like this:<br><figure class="highlight ini"><figcaption><span>.editorconfig</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># http://EditorConfig.org</span></div><div class="line"><span class="attr">root</span> = <span class="literal">true</span></div><div class="line"><span class="section"></span></div><div class="line">[*]</div><div class="line"><span class="attr">end_of_line</span> = lf</div><div class="line"><span class="attr">insert_final_newline</span> = <span class="literal">true</span></div><div class="line"><span class="attr">trim_trailing_whitespace</span> = <span class="literal">true</span></div><div class="line"><span class="attr">charset</span> = utf-<span class="number">8</span></div><div class="line"><span class="attr">indent_style</span> = space</div><div class="line"><span class="attr">indent_size</span> = <span class="number">2</span></div></pre></td></tr></table></figure></p>
