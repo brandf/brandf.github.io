@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://brandf.github.io/"/>
-  <updated>2016-10-11T22:57:20.594Z</updated>
+  <updated>2016-10-15T02:31:04.754Z</updated>
   <id>https://brandf.github.io/</id>
   
   <author>
@@ -14,6 +14,74 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Setting up a modern webgl environment - part 2</title>
+    <link href="https://brandf.github.io/2016/10/14/modern-webgl-environment-part2/"/>
+    <id>https://brandf.github.io/2016/10/14/modern-webgl-environment-part2/</id>
+    <published>2016-10-15T05:52:57.000Z</published>
+    <updated>2016-10-15T02:31:04.754Z</updated>
+    
+    <content type="html"><![CDATA[<p>In the last post we began to setup a modern javascript build system. If you didn’t read it, you can catch up here:</p>
+<p><a href="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/">https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/</a></p>
+<p>In this post we’re going to continue and setup babel, eslint, and editorconfig. At that point you’ll have an awesome environment to create the next great web app.</p>
+<p>If you were following along in par1, you can continue where we left off, otherwise clone this repo to catch up:</p>
+<p><a href="https://github.com/brandf/brandf-environment-part1.git" target="_blank" rel="external">https://github.com/brandf/brandf-environment-part1.git</a></p>
+<p>The first thing we’re going to do is setup an editor config. This is nice to have in an open source project because you don’t know what editor folks are going to use, and so this is a common way to describe what settings they should use.</p>
+<p>Simply create a file named .editorconfig that looks like this:<br><figure class="highlight ini"><figcaption><span>.editorconfig</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># http://EditorConfig.org</span></div><div class="line"><span class="attr">root</span> = <span class="literal">true</span></div><div class="line"><span class="section"></span></div><div class="line">[*]</div><div class="line"><span class="attr">end_of_line</span> = lf</div><div class="line"><span class="attr">insert_final_newline</span> = <span class="literal">true</span></div><div class="line"><span class="attr">trim_trailing_whitespace</span> = <span class="literal">true</span></div><div class="line"><span class="attr">charset</span> = utf-<span class="number">8</span></div><div class="line"><span class="attr">indent_style</span> = space</div><div class="line"><span class="attr">indent_size</span> = <span class="number">2</span></div></pre></td></tr></table></figure></p>
+<p>I’m using Visual Studio Code, which doesn’t support .editorconfig out of the box, so I needed to install an extension.  Hit Ctrl+P, and type “ext EditorConfig” to open the extensions. Install “EditorConfig for VS Code”.</p>
+<p>Now you can test it out by modifying a file to have a trailing space, or no new line, and see if it trims when you save.</p>
+<p>Next let’s install a transpiler called Babel.  Babel lets you write modern javascript, and compile it down to older javascript (most likely ES5).  Babel also acts as a platform for various other language extensions such as JSX (more on this in a future post).</p>
+<p>First we need to get the babel package from npm:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm install --save-dev babel-core</div></pre></td></tr></table></figure></p>
+<p>Now we could kick it off manually, but we already have webpack setup so let’s have webpack run babel on all javascript files as part of the bundling process.</p>
+<p>The babel loader module does this for us:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm install --save-dev babel-loader</div></pre></td></tr></table></figure></p>
+<p>Next we need to setup webpack to use the loader. Add this to the webpack config:<br><figure class="highlight javascript"><figcaption><span>webpack.config.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  <span class="attr">loaders</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">      <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">      <span class="attr">loaders</span>: [<span class="string">'babel'</span>],</div><div class="line">    &#125;,</div><div class="line">  ],</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>At this point, babel will run, but it doesn’t do much unless we tell it what transformations we want.  To do this, we need a babel config file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="built_in">echo</span> <span class="string">'&#123; "presets": ["latest"], "plugins": ["transform-runtime"] &#125;'</span> &gt; .babelrc</div></pre></td></tr></table></figure></p>
+<p>Next install the package for the preset and plugin:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">&gt; npm install babel-preset-latest --save-dev</div><div class="line">&gt; npm install babel-plugin-transform-runtime --save-dev</div></pre></td></tr></table></figure></p>
+<p>At the time of this writing, the ‘latest’ preset brings in es2015, es2016, and es2017 language features. The transform plugin is needed to make generators/async work. Now it’s time to write some modern javascript!</p>
+<p>Replace your app.js with this:<br><figure class="highlight javascript"><figcaption><span>src/app.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Foo</span> </span>&#123;</div><div class="line">  <span class="keyword">static</span> <span class="keyword">async</span> doIt() &#123;</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</div><div class="line">      <span class="keyword">await</span> Foo.delay(<span class="number">1</span>);</div><div class="line">      <span class="built_in">document</span>.body.appendChild(<span class="built_in">document</span>.createTextNode(i));</div><div class="line">    &#125;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">static</span> delay(seconds) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">res</span>) =&gt;</span> &#123;</div><div class="line">      setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">        res();</div><div class="line">      &#125;, seconds * <span class="number">1000</span>);</div><div class="line">    &#125;);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">Foo.doIt();</div></pre></td></tr></table></figure></p>
+<p>The above is just some toy code to exercise javascript classes (from es2015) and async methods (from es2017).</p>
+<p>To see it in action, just launch the server<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm run start</div></pre></td></tr></table></figure></p>
+<p>You can play around with it while the server is running and it will reload every time you save.</p>
+<p>Now that we’re writing javascript, we’ll soon get annoyed by simple typos causing bugs that aren’t discovered until runtime. YAY dynamic languages. One way to combat this is with static analysis. Since we already have a build step for bundling, we would like to find out about common mistakes at build time instead of runtime.</p>
+<p>eslint is great for this. Not only does it find mistakes like typos, but it also keeps the code clean/consistent by enforcing coding standards such as brace style, naming conventions, etc.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm install eslint-loader --save-dev</div></pre></td></tr></table></figure></p>
+<p>And then we need to add it to our loaders list.  Make sure it’s the right-most loader so it runs first.<br><figure class="highlight javascript"><figcaption><span>webpack.config.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>: &#123;</div><div class="line">  <span class="attr">loaders</span>: [</div><div class="line">    &#123;</div><div class="line">      <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">      <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">      <span class="attr">loaders</span>: [<span class="string">'babel'</span>, <span class="string">'eslint'</span>],</div><div class="line">    &#125;,</div><div class="line">  ],</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
+<p>Similar to how we configured babel, we’re going to configure eslint with .eslintrc.  You can use different rules to suit your taste, but the airbnb set are a good starting point.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install eslint-config-airbnb --save-dev</div></pre></td></tr></table></figure></p>
+<figure class="highlight json"><figcaption><span>.eslintrc</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="attr">"extends"</span>: <span class="string">"airbnb"</span>,</div><div class="line">  <span class="attr">"rules"</span>: &#123;</div><div class="line">    <span class="attr">"no-plusplus"</span>: <span class="string">"off"</span>,</div><div class="line">    <span class="attr">"no-param-reassign"</span>: [<span class="string">"error"</span>, &#123; <span class="attr">"props"</span>: <span class="literal">false</span> &#125;]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">"env"</span>: &#123;</div><div class="line">    <span class="attr">"browser"</span>: <span class="literal">true</span></div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>Note that I customized a few rules on top of airbnb.</p>
+<p>Now when we build, we will get warnings/errors if our code violates the rules.  At that point you have two options 1) fix the issues 2) override the rule. Sometimes it makes sense to override it because you know what you’re doing and the rule is to prevent something accedental like using | instead of ||.  One way to override it is to do something like this:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// eslint-disable-next-line no-bitwise</span></div><div class="line">gl.clear(gl.COLOR_BUFFER_BIT | gl.DEPTH_BUFFER_BIT);</div></pre></td></tr></table></figure>
+<p>Similar to editorconfig, you may want to setup your editor to run eslint. To do that in visual studio code, you type CTRL+P, then “ext ESLint”, and install it.  You may also need to install the package globally</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm install eslint -g</div></pre></td></tr></table></figure>
+<p>You may need to close/reopen VS Code, and now you’ll get red squiggles every time you violate an eslint rule.  Try adding a space between a function and it’s opening param…bad developer!</p>
+<p>That’s all for part 2.  We now have a pretty sophisticated build environment that lets us use the latest language features while still being able to target common browsers. </p>
+<p>You can find the end result here: <a href="https://github.com/brandf/brandf-environment-part2.git" target="_blank" rel="external">https://github.com/brandf/brandf-environment-part2.git</a></p>
+<p>In part 3 we’ll add some packages to help use WebGL and some babel loaders that help us with CSS and GLSL.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;In the last post we began to setup a modern javascript build system. If you didn’t read it, you can catch up here:&lt;/p&gt;
+&lt;p&gt;&lt;a href=&quot;https:
+    
+    </summary>
+    
+      <category term="Coding" scheme="https://brandf.github.io/categories/Coding/"/>
+    
+    
+      <category term="webgl" scheme="https://brandf.github.io/tags/webgl/"/>
+    
+      <category term="webpack" scheme="https://brandf.github.io/tags/webpack/"/>
+    
+      <category term="babel" scheme="https://brandf.github.io/tags/babel/"/>
+    
+      <category term="es2015" scheme="https://brandf.github.io/tags/es2015/"/>
+    
+      <category term="javascript" scheme="https://brandf.github.io/tags/javascript/"/>
+    
+      <category term="node" scheme="https://brandf.github.io/tags/node/"/>
+    
+  </entry>
   
   <entry>
     <title>Setting up a modern webgl environment - part 1</title>

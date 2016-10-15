@@ -3,14 +3,24 @@
 <head>
   <meta charset="utf-8">
   
-  <title>Brandon Furtwangler</title>
+  <title>Setting up a modern webgl environment - part 2 | Brandon Furtwangler</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Brandon Furtwangler">
-<meta property="og:url" content="https://brandf.github.io/index.html">
+  <meta name="description" content="In the last post we began to setup a modern javascript build system. If you didn’t read it, you can catch up here:
+https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/
+In this post we’r">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Setting up a modern webgl environment - part 2">
+<meta property="og:url" content="https://brandf.github.io/2016/10/14/modern-webgl-environment-part2/index.html">
 <meta property="og:site_name" content="Brandon Furtwangler">
+<meta property="og:description" content="In the last post we began to setup a modern javascript build system. If you didn’t read it, you can catch up here:
+https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/
+In this post we’r">
+<meta property="og:updated_time" content="2016-10-15T02:31:04.754Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Brandon Furtwangler">
+<meta name="twitter:title" content="Setting up a modern webgl environment - part 2">
+<meta name="twitter:description" content="In the last post we began to setup a modern javascript build system. If you didn’t read it, you can catch up here:
+https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/
+In this post we’r">
   
     <link rel="alternate" href="/atom.xml" title="Brandon Furtwangler" type="application/atom+xml">
   
@@ -81,9 +91,7 @@
   </div>
 </header>
       <div class="outer">
-        <section id="main">
-  
-    <article id="post-modern-webgl-environment-part2" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-modern-webgl-environment-part2" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2016/10/14/modern-webgl-environment-part2/" class="article-date">
   <time datetime="2016-10-15T05:52:57.000Z" itemprop="datePublished">2016-10-14</time>
@@ -100,8 +108,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/14/modern-webgl-environment-part2/">Setting up a modern webgl environment - part 2</a>
+    <h1 class="article-title" itemprop="name">
+      Setting up a modern webgl environment - part 2
     </h1>
   
 
@@ -156,134 +164,22 @@
     </footer>
   </div>
   
-</article>
-
-
+    
+<nav id="article-nav">
   
-    <article id="post-modern-webgl-environment-part1" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/10/modern-webgl-environment-part1/" class="article-date">
-  <time datetime="2016-10-11T04:23:57.000Z" itemprop="datePublished">2016-10-10</time>
-</a>
-    
-  <div class="article-category">
-    <a class="article-category-link" href="/categories/Coding/">Coding</a>
-  </div>
-
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/10/modern-webgl-environment-part1/">Setting up a modern webgl environment - part 1</a>
-    </h1>
+    <a href="/2016/10/10/modern-webgl-environment-part1/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Setting up a modern webgl environment - part 1</div>
+    </a>
   
+</nav>
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>With modern browsers, node.js, and github, the javascript ecosystem has grown tremendously.  While the language is evolving, user adoption is lagging behind, so developers must make a choice: limit yourself to commonly adopted features (such as ES5), or use a build system to take advantage of modern features and ‘compile’ it down to ES5.</p>
-<p>In this post, I’m going to describe how I setup the latter, specifically for making a website that is using WebGL. If you’ve been paying attention over the last few years, you will have noticed that there are plenty of options for javascript build system tools, and it can be confusing what to use and how to set it up so I’m going to focus on what I believe is the simplest system that gives you the most bang for your buck.</p>
-<p>Specifically, in this and subsequent posts we’re going build an environment that uses the following tools:</p>
-<ul>
-<li>git (for source control)</li>
-<li>node/npm (for package management)</li>
-<li>webpack (for bundling)</li>
-<li>babel (for es2017 transpiling)</li>
-<li>eslint (for static analysis)</li>
-<li>editorconfig (for editor settings)</li>
-</ul>
-<p>Instead of just giving you a yeoman generator that drops a complicated build system in your lap, we’re going to build it up piece by piece from scratch.</p>
-<p>First, we need to decide how we’re going to execute the build process.  For this, I think the choice is easy - Node.js. Your team is presumably already familiar with javascript, so writing the build system in javascript is a natural choice. Node also ships with a fantastic package manager (npm), so this will make it easy to pull in 3rd party dependencies like webpack and babel.</p>
-<p>If you don’t have it already, go ahead and install Node.js from <a href="https://nodejs.org/" target="_blank" rel="external">https://nodejs.org/</a></p>
-<p>We’re going to be using github for source control, if you don’t have it, you can get the client from <a href="https://desktop.github.com/" target="_blank" rel="external">https://desktop.github.com/</a></p>
-<p>Now create a new github repro.  I typically do this from here <a href="https://github.com/new" target="_blank" rel="external">https://github.com/new</a>.</p>
-<p>After creating the repo, you’ll get a link that looks like this: <a href="https://github.com/brandf/brandf-environment-part1.git" target="_blank" rel="external">https://github.com/brandf/brandf-environment-part1.git</a>, only with your username/repro instead of mine.</p>
-<p>Now open up a terminal and we’ll setup a node package for our project.<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; git <span class="built_in">clone</span> &lt;link_to_repo&gt;</div><div class="line">&gt; <span class="built_in">cd</span> &lt;repo_name&gt;</div><div class="line">&gt; npm init</div></pre></td></tr></table></figure></p>
-<p>Answer the questions, and you’ll have yourself a package.json file.  This is a manifest file that npm uses to track your projects dependencies, as well as other metadata in case you decide to publish this module to npm.</p>
-<p>At this point there are several directions we could go - Grunt, Gulp, Browserify, etc are commonly used, but for this project I think Webpack is a great choice.  Webpack will do a few things for us </p>
-<p>1) it understands modules, and even node<br>packages, so you can easily write modular javascript and Webpack will bundle it all together into something that is easy<br>to consume in a browser.<br>2) It coordinates the execution of various other tools, which can transform your code.  We will<br>use this to write modern javascript and have it transpiled (via babel) down to ES5.</p>
-<p>To setup webpack, we first need to install it via npm:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm install webpack --save-dev</div></pre></td></tr></table></figure></p>
-<p>Then we’re going to put the webpack configuration in a file called webpack.config.js:<br><figure class="highlight"><figcaption><span>webpack.config.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">module.exports = &#123;</div><div class="line">  entry: './src/app.js',</div><div class="line">  output: &#123;</div><div class="line">    path: './bin/',</div><div class="line">    publicPath: '/bin/',</div><div class="line">    filename: 'bundle.js',</div><div class="line">    sourceMapFilename: '[file].map',</div><div class="line">    devtoolModuleFilenameTemplate: 'webpack:///[resource-path]?[loaders]',</div><div class="line">  &#125;,</div><div class="line">  devtool: 'source-map',</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
-<p>This tells webpack that src/app.js is our entry point, and it will traverse all the module dependencies and bundle them up into bin/bundle.js. It will also produce source maps for bundle.js that let you debug the original source files rather than the generated bundle.js file.</p>
-<p>For now we’ll just make a placeholder entry point:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; mkdir ./src</div><div class="line">&gt; mkdir ./bin</div><div class="line">&gt; <span class="built_in">echo</span> <span class="string">"document.write('hello world');"</span> &gt; ./src/app.js</div></pre></td></tr></table></figure></p>
-<p>We can now build the bundle, to produce bin/bundle.js<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; ./node_modules/.bin/webpack</div></pre></td></tr></table></figure><br>We run it out of the node modules so that we don’t have any global dependencies except node.js.</p>
-<p>To test this, we need to host the bundle in an html file:<br><figure class="highlight html"><figcaption><span>index.html</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">head</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"gl"</span>&gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></div><div class="line">    <span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"bin/bundle.js"</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div><div class="line">  <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p>Note that I put this in the root of the project to make it easy to use with github pages.  The canvas tag is what we will use later to render WebGL.</p>
-<p>At this point you can open index.html in a browser and see that the javascript is running.  Better yet, we can locally host this as a website using the webpack dev server.  This can give you hot module swapping, which makes iterating really fast.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm install webpack-dev-server -save-dev</div></pre></td></tr></table></figure>
-<p>To run with the dev server, try this:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; ./node_modules/.bin/webpack-dev-server --inline --hot --progress --colors --open</div></pre></td></tr></table></figure></p>
-<p>This should open your browser for you, and if you make changes, the browser will automatically reload after you save so you can see the result instantly.<br><figure class="highlight javascript"><figcaption><span>src/app.js</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">document</span>.write(<span class="string">'hot swap'</span>);</div></pre></td></tr></table></figure></p>
-<p>Next let’s move the webpack commands into package.json. Replace the existing script tag with this:<br><figure class="highlight"><figcaption><span>package.json</span></figcaption><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">"scripts": &#123;</div><div class="line">  "build": "./node_modules/.bin/webpack --progress --colors",</div><div class="line">  "start": "./node_modules/.bin/webpack-dev-server --inline --hot --progress --colors --open"</div><div class="line">&#125;,</div></pre></td></tr></table></figure></p>
-<p>This is a nice thing to do in case you publish this on npm.  Folks can just install your package, and build it without knowledge of the specific build tools you used. It’s also easier to execute than digging into node_modules and remembering all the flags.</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm run build</div></pre></td></tr></table></figure>
-<p>Or to launch the dev server:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; npm run start</div></pre></td></tr></table></figure>
-<p>Finally, let’s check what we have into git.  We don’t want to check in the node_modules though, so add a .gitignore file:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&gt; <span class="built_in">echo</span> <span class="string">"node_modules"</span> &gt; .gitignore</div></pre></td></tr></table></figure></p>
-<p>And now, commit it to your repo.  We even commit ./bin/* because we want the project to work with github pages (more on this in another post).<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&gt; git add -A</div><div class="line">&gt; git commit -m <span class="string">"setup webpack and npm package"</span></div><div class="line">&gt; git push</div></pre></td></tr></table></figure></p>
-<p>That’s all for part 1.  You can find the end result here: <a href="https://github.com/brandf/brandf-environment-part1.git" target="_blank" rel="external">https://github.com/brandf/brandf-environment-part1.git</a></p>
-<p>In part 2 we’ll hook up babel, eslint, and start writing some modern javascript code.</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/" data-id="ciuai4k180000r0nzncuhv3l1" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/babel/">babel</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/es2015/">es2015</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/javascript/">javascript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node/">node</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webgl/">webgl</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </footer>
-  </div>
   
 </article>
 
 
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/02/hello-world/" class="article-date">
-  <time datetime="2016-10-02T17:28:38.417Z" itemprop="datePublished">2016-10-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/02/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to my new blog!</p>
-<p>A bit about me…I’m a software developer, and I’m interested in platforms and game development. I’ve worked on platforms at Microsoft and HBO, and soon I’ll be joining Facebook to help bring VR to the web.</p>
-<p>I’m not sure how this blog will evolve, but the plan is to post about web development, WebGL, WebVR, Chromium, electronics, racing drones, and whatever other topics interest me.</p>
-<p>That’s it for now, just wanted to say hi.  Stay tuned!</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://brandf.github.io/2016/10/02/hello-world/" data-id="ciuai4k1g0004r0nzdb1adqji" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-
+<div class="fb-comments" data-href="https://brandf.github.io/2016/10/14/modern-webgl-environment-part2/" data-numposts="10" data-width="800"></div>
 </section>
         
           <aside id="sidebar">
