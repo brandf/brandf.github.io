@@ -17,7 +17,7 @@ https://brandf.github.io/2016/10/10/modern-webgl-environment-part1/
 
 In this post we're going to continue and setup babel, eslint, and editorconfig. At that point you'll have an awesome environment to create the next great web app.
 
-If you were following along in par1, you can continue where we left off, otherwise clone this repo to catch up:
+If you were following along in part 1, you can continue where we left off, otherwise clone this repo to catch up:
 
 https://github.com/brandf/brandf-environment-part1.git
 
